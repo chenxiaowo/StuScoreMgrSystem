@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="default" extends="json-default">
+
+		<interceptors>
+		<interceptor name="loginInterceptor" class="org.interceptor.LoginInterceptor"></interceptor>
+		<interceptor-stack name="loginStack">
+			<interceptor-ref name="loginInterceptor">
+				<param name="excludeMethods">login</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+	
+	<default-interceptor-ref name="loginStack"></default-interceptor-ref>
+	
+
+
+		<!--这里以后添加Action配置，后面配置的Action都要添加在这里-->
+
+		<action name="allKc" class="AllKc">
+			<result name="success">/xk.jsp</result>
+			<result name="error">/main.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="deleteKc" class="DeleteKc">
+			<result name="success">/delsucess.jsp</result>
+			<result name="error">/xk.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="login" class="LoginAction">
+			<result name="success">/frame.jsp</result>
+			<result name="error">/login.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="mgr">/mgr.jsp</result>
+		</action>
+
+		<action name="modifyXx" class="ModifyXx">
+			<result name="success">/xx.jsp</result>
+			<result name="error">/main.jsp</result>
+			<result name="input">/xg.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="personXk" class="PersonXk">
+			<result name="success">/gr.jsp</result>
+			<result name="error">/main.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="selectkc" class="SelectKc">
+			<result name="success">/sesucess.jsp</result>
+			<result name="error">/xk.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="showXx" class="ShowXx">
+			<result name="success">/xx.jsp</result>
+			<result name="error">/main.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="upload" class="UploadAction">
+			<result name="success">/xx.jsp</result>
+			<result name="error">/xk.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="test" class="TestAction">
+			<result name="success">/test.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="allCjs" class="AllCjs">
+			<result name="success">/allCj.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="delCj" class="DeleteCj">
+			<result name="success">/right.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="grCj" class="GrCjs">
+			<result name="success">/grCj.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="json" class="JsonTest">
+			<result type="json" name="jsonv">
+				<param name="root">vcjbs</param>
+			</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		
+		<action name="xgcj" class="XgCjs">
+			<result name="got">/xgcj.jsp</result>
+		</action>
+		
+
+
+	</package>
+</struts>
